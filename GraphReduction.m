@@ -1,7 +1,7 @@
 function [] = lanczos(A, m)
 prompt="enter g value";
 g=input(prompt);%To choose the type of graph
-if g == 1 %
+if g == 1 
         fileID = fopen('output\cycle_graph_output.txt','w')%Creates a output text file
         fprintf(fileID,'edges\t initial_nodes\t nodes_after_reduction\t difference \n') 
         myfolderinfo = dir('cycle_graph') ; %lists folder contents   
