@@ -2,26 +2,25 @@ function [] = lanczos(A, m)
 prompt="enter g value";
 g=input(prompt);%To choose the type of graph
 if g == 1 
-        fileID = fopen('output\cycle_graph_output.txt','w')%Creates a output text file
-        fprintf(fileID,'edges\t initial_nodes\t nodes_after_reduction\t difference \n') 
+        fileID = fopen('cycle_graph_output.txt','w')%Creates a output text file
+        fprintf(fileID,'Edges\t Initial_nodes\t Nodes_after_reduction\t Difference \n') 
         myfolderinfo = dir('cycle_graph') ; %lists folder contents   
-        N = length(myfolderinfo) ; %Specifies number of files in the folder
+        N = length(myfolderinfo) ; %specifies number of files in the folder
         else if g == 2
-        fileID = fopen('output2\wheel_graph_output.txt','w')
-        fprintf(fileID,'edges\t initial_nodes\t nodes_after_reduction\t difference \n')
+        fileID = fopen('wheel_graph_output.txt','w')
+        fprintf(fileID,'Edges\t Initial_nodes\t Nodes_after_reduction\t Difference \n')
         myfolderinfo = dir('wheel_graph') ;    
         N = length(myfolderinfo) ; 
         else if g == 3
-        fileID = fopen('output2\windmill_graph_output.txt','w')
-        fprintf(fileID,'edges\t initial_nodes\t nodes_after_reduction\t difference \n')
+        fileID = fopen('windmill_graph_output.txt','w')
+        fprintf(fileID,'Edges\t Initial_nodes\t Nodes_after_reduction\t Difference \n')
         myfolderinfo = dir('windmill_graph') ;  
         N = length(myfolderinfo) ; 
             end
             end
 end
 for i = 3:N %To iterate through every file in the respective directory
-thisfile = myfolderinfo(i).name
-A=readmatrix([myfolderinfo(i).folder '\' myfolderinfo(i).name],'Whitespace',' []');%Reads data as matrix from all the files  in the respective directory
+A=readmatrix([myfolderinfo(i).folder '/' myfolderinfo(i).name],'Whitespace',' []');%Reads data as matrix from all the files  in the respective directory
 [n,k] = size(A);
 e=sum(A(:) == 1)/2;
 V = zeros(k,k);
@@ -55,9 +54,9 @@ T(m+1,m+1)=alpha(m+2);
 V = V(:,2:loopcnt+1)
 disp(['approximating eigenvalues are: ', num2str(eigs(T)')]);
 T %Tridiagonal matrix after reduction 
-j
 n2=j-1;%number of nodes after reduction
 d=n-n2;%difference between intial nodes and total nodes after reduction
-fprintf(fileID,'%d\t %d\t %d\t %d\n',e,n,n2,d);
+fprintf(fileID,'%d\t\t\t %3d\t\t\t\t %-5d\t\t\t\t %d\t \n',e,n,n2,d);
 end
 end
+
